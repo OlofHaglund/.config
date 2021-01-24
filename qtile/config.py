@@ -8,6 +8,7 @@ from typing import List  # noqa: F401
 
 mod = "mod4"
 terminal = 'alacritty'
+home = os.path.expanduser('~')
 
 keys = [
     # Switch between windows in current stack pane
@@ -40,7 +41,7 @@ keys = [
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout()),
     Key([mod], "w", lazy.window.kill()),
-
+    Key([mod], "l", lazy.spawn(f"{home}/.config/qtile/lock.sh")),
     Key([mod, "control"], "r", lazy.restart())
 #    Key([mod], "r", lazy.spawncmd())
 ]
@@ -48,7 +49,6 @@ keys = [
 lzy_custom_layout = [
     layout.Bsp(fair=False, margin=20)
 ]
-home = os.path.expanduser('~')
 group_names = [
     ("LZY", {'layout': 'bsp', 'spawn': ['firefox', terminal], 'layouts': lzy_custom_layout}),
     ("SOC", {'layout': 'max', 'spawn': 'discord'}),
